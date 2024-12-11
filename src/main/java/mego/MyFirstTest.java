@@ -7,7 +7,7 @@ public class MyFirstTest {
         int age = 32;
         System.out.println("hi my name is " + myFirstName + " " + myLastName);
         System.out.println("\nmy age is " + " " + age);
-        System.out.println(60 / 3.5);
+        System.out.println   (60 / 3.5);
 
     }
 }
