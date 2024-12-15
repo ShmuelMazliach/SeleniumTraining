@@ -8,7 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-public class AdidasWomenHoodiesPage {
+public class adidasWomenHoodiesPage {
 
     @FindBy(css = "span.value:not(.productcount)")
     List<WebElement> HoodiesWomenPriceList;
@@ -19,18 +19,19 @@ public class AdidasWomenHoodiesPage {
 
 
     private ChromeDriver driver;
-    public AdidasWomenHoodiesPage(ChromeDriver driver) {
+    public adidasWomenHoodiesPage(ChromeDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
     public void filterWomenHoodiesByPrice(double targetPrice){
-        System.out.println("The products whose price is less than" +targetPrice +"are:");
+        System.out.println("The products whose price is less than  " +targetPrice+"  are:");
         for(int i=0;i<HoodiesWomenPriceList.size()-1;i++){
             String priceText = HoodiesWomenPriceList.get(i).getText();
             double price = Double.parseDouble(priceText.replaceAll("[^0-9.]",""));
             String nameProduct = categoryNames.get(i).getText();
-            System.out.println(nameProduct+ " - "+price);
             Assert.assertTrue("there are some of items that their price is higher than 600$",price<= targetPrice);
+            System.out.println(nameProduct+ " - "+price);
+
 
         }
 

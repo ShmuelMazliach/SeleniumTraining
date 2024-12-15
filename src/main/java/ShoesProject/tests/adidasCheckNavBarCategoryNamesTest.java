@@ -1,25 +1,25 @@
 package ShoesProject.tests;
 
 import ShoesProject.pages.adidasHomePage;
-import ShoesProject.pages.AdidasMenPage;
 import mego.selenium.seleniumBase;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-import static java.lang.Thread.sleep;
+import java.util.Arrays;
+import java.util.List;
 
-public class AdidasMenTest {
-public ChromeDriver driver;
+public class adidasCheckNavBarCategoryNamesTest {
+    public static void main(String[] args) {
 
-    public static void main(String[] args) throws InterruptedException {
+        List<String> expectedNavBarItems = Arrays.asList("MEN","WOMEN","KIDS","NEW","SPORTS",
+                                                                "BRANDS","LIFESTYLE","OUTLET");
+
         seleniumBase base = new seleniumBase();
         ChromeDriver driver = base.seleniumInit("https://www.adidas.co.il/en");
         adidasHomePage adidasHome = new adidasHomePage(driver);
-        AdidasMenPage adidasMen = new AdidasMenPage (driver);
         adidasHome.acceptTrackingConsent();
-        adidasHome.navigateToMenCategory();
-        adidasMen.isMenCategoryPageDisplayed();
+        adidasHome.checkNavbarCategoriesMatch(expectedNavBarItems);
         base.seleniumClose(driver);
 
-    }
 
+    }
 }

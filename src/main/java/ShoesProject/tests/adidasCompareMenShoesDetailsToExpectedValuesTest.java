@@ -1,8 +1,8 @@
 package ShoesProject.tests;
 
 import ShoesProject.pages.adidasHomePage;
-import ShoesProject.pages.AdidasMenPage;
-import ShoesProject.pages.AdidasMenShoesPage;
+import ShoesProject.pages.adidasMenPage;
+import ShoesProject.pages.adidasMenShoesPage;
 import mego.selenium.seleniumBase;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -10,11 +10,11 @@ import java.util.Arrays;
 import java.util.List;
 
 
-public class AdidasMenShoesTest {
+public class adidasCompareMenShoesDetailsToExpectedValuesTest {
     public ChromeDriver driver;
 
     public static void main(String[] args) throws InterruptedException {
-        double expectedSum = 2799.70;
+
         List<String> expectedNames = Arrays.asList(
                 "COPA PURE 3 ELITE FIRM GROUND BOOTS",
                 "PREDATOR ELITE FIRM GROUND BOOTS",
@@ -25,18 +25,15 @@ public class AdidasMenShoesTest {
         List<String> expectedPrices = Arrays.asList("₪ 1,299.90","₪ 1,049.90","₪ 449.90","₪ 349.90","₪ 1,049.90","₪ 1,099.90");
 
 
-
         seleniumBase base = new seleniumBase();
         ChromeDriver driver = base.seleniumInit("https://www.adidas.co.il/en");
         adidasHomePage adidasHome = new adidasHomePage(driver);
-        AdidasMenPage adidasMen = new AdidasMenPage (driver);
-        AdidasMenShoesPage menShoes = new AdidasMenShoesPage(driver);
+        adidasMenPage adidasMen = new adidasMenPage(driver);
+        adidasMenShoesPage menShoes = new adidasMenShoesPage(driver);
         adidasHome.acceptTrackingConsent();
         adidasHome.navigateToMenCategory();
         adidasMen.clickMenShoesCategory();
-        menShoes.getAllNamesAndPricesOfMenShoes();
-        menShoes.sumOfFirstThreePrices(expectedSum);
-        menShoes.verifySixProductNamesAndPrices(expectedNames,expectedPrices);
+        menShoes.checkShoesNamesAndPrices(expectedNames,expectedPrices);
         base.seleniumClose(driver);
 
     }

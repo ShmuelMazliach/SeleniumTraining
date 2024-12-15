@@ -45,7 +45,7 @@ public class adidasHomePage {
             System.out.println("No tracking consent button found.");
         }
     }
-    public void verifyNavBarItems(List<String> expectedNavBarItems) {
+    public void checkNavbarCategoriesMatch(List<String> expectedNavBarItems) {
         Assert.assertEquals("Number of nav bar items does not match.",navBarItems.size(),expectedNavBarItems.size());
         System.out.println("Number of nav bar items is as expected!");
         for(int i=0;i<navBarItems.size();i++){

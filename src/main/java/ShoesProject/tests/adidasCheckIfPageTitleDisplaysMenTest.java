@@ -1,23 +1,25 @@
 package ShoesProject.tests;
 
 import ShoesProject.pages.adidasHomePage;
-import ShoesProject.pages.AdidasSearchResultsPage;
+import ShoesProject.pages.adidasMenPage;
 import mego.selenium.seleniumBase;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class AdidasSearchResultTest {
-    public ChromeDriver driver;
+import static java.lang.Thread.sleep;
 
-    public static void main(String[] args) {
-        String text= "Shoes";
+public class adidasCheckIfPageTitleDisplaysMenTest {
+public ChromeDriver driver;
 
+    public static void main(String[] args) throws InterruptedException {
         seleniumBase base = new seleniumBase();
         ChromeDriver driver = base.seleniumInit("https://www.adidas.co.il/en");
         adidasHomePage adidasHome = new adidasHomePage(driver);
-        AdidasSearchResultsPage shoesPage = new AdidasSearchResultsPage(driver);
+        adidasMenPage adidasMen = new adidasMenPage(driver);
         adidasHome.acceptTrackingConsent();
-        adidasHome.searchBox(text);
-        shoesPage.titleVerification(text);
+        adidasHome.navigateToMenCategory();
+        adidasMen.isMenCategoryPageDisplayed();
         base.seleniumClose(driver);
+
     }
+
 }
